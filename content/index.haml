@@ -1,0 +1,17 @@
+---
+title: Home
+---
+%h1 content
+
+%section.article
+  - sorted_articles_by_filename.each do |article|
+    - next if article[:draft]
+    %article{:class => article[:section]}
+      %header
+        -if article[:title]
+          %h2= article[:title]
+        -if article[:summary]
+          %h3= article[:summary]
+          
+        %p= article.compiled_content(:rep => :default)
+    

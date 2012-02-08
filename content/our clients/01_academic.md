@@ -1,0 +1,2 @@
+##Academic
+As a scholar participating in an international academic field, you have likely gained mastery of the English language. Wordsmiths copy-editors understands that academic language needs to be highly precise as we share your passion for scholarly work.

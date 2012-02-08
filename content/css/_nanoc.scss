@@ -1,0 +1,101 @@
+// Example index.haml styles.
+$red: #942821;
+$turquoise: #24998A;
+$lightBrown: #967E69;
+
+$columnWidth: 220px;
+
+
+.home:nth-child(1){
+  width: 3 * $columnWidth;
+}
+.home:nth-child(2){
+  width: 5 * $columnWidth;
+}
+
+.additional_services{
+  width: 3 * $columnWidth;
+}
+
+
+body {
+/*  background: #f00*/
+}
+
+h1{
+  font-family: 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
+}
+
+h2{
+  color: $red !important;
+  font: 18px/200% 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
+  text-shadow: rgba(0, 0, 0, .15) 0px -1px 1px, rgba(255, 255, 255, .6) 0px 0px 1px, rgba(255, 255, 255, 0.4) 0 1px 1px;
+}
+
+h3{
+  color: $lightBrown;
+  text-align:center;
+  font:{
+    style: italic;
+    family: Nobile, sans-serif;
+    size: 11px;
+    weight: normal;
+  }
+}
+.home,
+.additional_services{
+  margin:auto;
+}
+
+
+
+.home{
+  ol{
+    width: 5 * $columnWidth;
+    li{
+      display:inline-block;
+      width: $columnWidth;
+      vertical-align:top;
+      margin:0;
+      padding:0;
+      em{
+        color: $lightBrown;
+        font:{
+          family: Nobile, sans-serif;
+          size: 11px;
+          weight: normal;
+        }
+      }
+    }
+  }
+}
+
+p, dd{
+  color: $red;
+  font: {
+    family: Nobile, sans-serif;
+    size: 13px;
+    style: italic;
+  }
+  
+}
+
+.additional_services{
+  dt{
+    font: 18px/200% 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
+    color: #24998A;
+    width: $columnWidth;
+    display:inline-block;
+    line-height:200%;
+    padding: {
+      left: 10px
+    }
+    border: {
+      radius: 5px;
+      width: 1px;
+      style: dashed;
+      color: #E0D0BF;
+    }
+  }
+
+}

@@ -6,12 +6,11 @@ title: Home
 %section.article
   - sorted_articles_by_filename.each do |article|
     - next if article[:draft]
-    %article{:class => article[:section]}
-      %header
-        -if article[:title]
-          %h2= article[:title]
-        -if article[:summary]
-          %h3= article[:summary]
+    %article{:class => [article[:section], article[:style]]}
+      -if article[:title]
+        %h2= article[:title]
+      -if article[:summary]
+        %h3= article[:summary]
           
-        %p= article.compiled_content(:rep => :default)
+      = article.compiled_content(:rep => :default)
     

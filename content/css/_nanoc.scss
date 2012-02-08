@@ -13,7 +13,8 @@ $columnWidth: 220px;
   width: 5 * $columnWidth;
 }
 
-.additional_services{
+.additional_services,
+.writing_services{
   width: 3 * $columnWidth;
 }
 
@@ -29,7 +30,10 @@ h1{
 h2{
   color: $red !important;
   font: 18px/200% 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
-  text-shadow: rgba(0, 0, 0, .15) 0px -1px 1px, rgba(255, 255, 255, .6) 0px 0px 1px, rgba(255, 255, 255, 0.4) 0 1px 1px;
+  text:{
+    shadow: rgba(0, 0, 0, .15) 0px -1px 1px, rgba(255, 255, 255, .6) 0px 0px 1px, rgba(255, 255, 255, 0.4) 0 1px 1px;
+    align: center;
+    }
 }
 
 h3{
@@ -43,21 +47,35 @@ h3{
   }
 }
 .home,
+.writing_services,
 .additional_services{
   margin:auto;
 }
 
-
+.borderBox{
+  border: 1px solid lighten($lightBrown, 30%);
+  border-radius: 5px;
+  background-color: #F8F3EF;
+  box-shadow: 0px 0px 15px lighten($lightBrown, 40%);
+  padding: 22px 20px 16px 20px;
+  margin-bottom:20px;
+  h2{
+    text-align:left;
+  }
+}
 
 .home{
   ol{
     width: 5 * $columnWidth;
     li{
-      display:inline-block;
+      float:left;
       width: $columnWidth;
       vertical-align:top;
       margin:0;
       padding:0;
+      h2{
+        text-align:left;
+      }
       em{
         color: $lightBrown;
         font:{
@@ -70,6 +88,13 @@ h3{
   }
 }
 
+.home.borderBox>p,
+.home.borderBox>h2{
+  text-align:center;
+  width: 2 * $columnWidth;
+  margin:auto
+}
+
 p, dd{
   color: $red;
   font: {
@@ -80,7 +105,8 @@ p, dd{
   
 }
 
-.additional_services{
+.additional_services,
+.writing_services{
   dt{
     font: 18px/200% 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
     color: #24998A;

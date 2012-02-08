@@ -1,0 +1,3 @@
+[submodule "content/js/mylibs/jquery.tabs"]
+	path = content/js/mylibs/jquery.tabs
+	url = https://github.com/samcroft/lightweight-semantic-jquery-tabs.git

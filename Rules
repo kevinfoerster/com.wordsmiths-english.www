@@ -20,18 +20,18 @@ compile %r{/_.+/$} do
   # don't compile partials
 end
 
-compile '/css/*/' do
+compile '/assets/css/*/' do
   filter :sass, Compass.sass_engine_options
 end
 
-compile '/js/*/' do
+compile '/assets/js/*/' do
   # only minify if it's not already minified
   unless MINIFIED_JS_RE.match(item[:extension])
     filter :uglify_js
   end
 end
 
-compile '/404/' do
+compile '/assets/404/' do
   # don't compile 404.html
 end
 
@@ -58,22 +58,48 @@ route %r{/_.+/$} do
   nil # don't route partials
 end
 
-route '/css/*/' do
-  item.identifier.chop + '.css'
+route '/assets/css/*/' do
+  path = item.identifier.split("/")
+  path.shift(2)
+  path = path.join("/")
+  "/" + path + '.css'
+  
+  # item.identifier.chop + '.css'
 end
 
-route '/js/*/' do
+route '/assets/js/*/' do
   # use .min.js extension for non-minified JS files
   ext = item[:extension]
   unless MINIFIED_JS_RE.match(ext)
     ext = ext.sub(/js$/, 'min.js')
   end
-  item.identifier.chop + '.' + ext
+  
+  # item.identifier.chop + '.' + ext
+  
+  # moving js folder to root
+  path = item.identifier.split("/")
+  path.shift(2)
+  path = path.join("/")
+  "/" + path + '.' + ext
+  
 end
 
-route '/404/' do
+route '/assets/404/' do
   '/404.html'
 end
+
+
+route 'assets/*' do
+  if item.binary? || !HTML_EXTENSIONS.include?(item[:extension])
+    # Write item with identifier /foo/ to /foo.ext
+    path = item.identifier.split("/")
+    path.shift(2)
+    path = path.join("/")
+    "/" + path + '.' + item[:extension]
+  end
+end
+
+
 
 route '*' do
   if item.binary? || !HTML_EXTENSIONS.include?(item[:extension])

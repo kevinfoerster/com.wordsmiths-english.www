@@ -45,23 +45,24 @@
     #container
 
       %header.clearfix
-        %img{:src => 'img/logo.png'}
-        %ul#nav.clearfix
-          %li#nav_writing_services
-            %span 
-            Writing services
-          %li#nav_additional_services
-            %span 
-            Additional services
-          %li#nav_out_clients
-            %span 
-            Our Clients
-          %li#nav_about_us
-            %span 
-            About Us
-          %li#nav_contact_us
-            %span 
-            Contact us
+        #navigationWrapper
+          %img{:src => 'img/logo.png'}
+          %ul#nav.clearfix
+            %li#nav_writing_services
+              %span 
+              Writing services
+            %li#nav_additional_services
+              %span 
+              Additional services
+            %li#nav_our_clients
+              %span 
+              Our Clients
+            %li#nav_about_us
+              %span 
+              About Us
+            %li#nav_contact_us
+              %span 
+              Contact us
 
 
       #main{ :role => 'main' }= yield

@@ -22,11 +22,12 @@ $amaranth: 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
 .additional_services,
 .writing_services{
   width: 3 * $columnWidth;
+  z-index:1;
 }
 
 
 body {
-  padding-top:300px;
+  padding-top:133px;
 }
 
 h1{
@@ -75,6 +76,13 @@ h4{
 
 
 header{
+  width:100%;
+  z-index:2;
+  #navigationWrapper{
+    width: 5 * $columnWidth + 4 * $gutter;
+    margin:auto;
+    display:block;
+  }  
   background:{
     color: $beige;
     image: url(../img/header_edge.png);
@@ -86,44 +94,70 @@ header{
   }
   position:fixed;
   top:0px;
-  width: 5 * $columnWidth + 4 * $gutter;
-  margin:auto;
-  display:block;
 }
+
+
+
+
+
+
+
+
+@mixin mainMenuNav($section) {
+  li#nav_#{$section} {
+    background: {
+      image: url(../img/nav/#{$section}_bg.png);
+    }
+    span{
+      background-image: url(../img/nav/#{$section}.png);
+    }
+  }
+}
+
+@include mainMenuNav(writing_services);
+@include mainMenuNav(additional_services);
+@include mainMenuNav(our_clients);
+@include mainMenuNav(about_us);
+@include mainMenuNav(contact_us);
+
 #nav{
-  height:86px;
+  height:95px;
   list-style-type:none;
   float:right;
+  margin:0;
+  padding:0;
   li{
-
-
+    text-align:center;
+    vertical-align:top;
     font: 16px/200% $amaranth;
     color: $nav_turquise;
     float:left;
-    height:86px;
-    padding:0 20px;
+    height:70px;
+    padding:0 10px;
     background: {
-      image: url(../img/additional_visual_bg.png);
       repeat: no-repeat;
       position:top center;
+      
     }
     span{
+      margin:auto;
+      display:block;
+      width:100px;
       -webkit-transition: background-position 0.2s ease-in-out;
       position: relative;
       top: -10px;
       height: 69px;
       display:block;
-      vertical-align:bottom;
+      margin-bottom:-13px;
       background: {
-        image: url(../img/additional_visual.png);
         repeat: no-repeat;
         position: 0 10px;
-      }
-      
+      } 
     }
-  }
-  li:hover span{
-    background-position: 0 0px;
+    &:hover span{
+      background-position: 0 0px;
+    }
+    
   }
 }
 

@@ -45,6 +45,24 @@
     #container
 
       %header
+        %img{:src => 'img/logo.png'}
+        %ul#nav.clearfix
+          %li#nav_writing_services
+            %span 
+            Writing services
+          %li#nav_additional_services
+            %span 
+            Additional services
+          %li#nav_out_clients
+            %span 
+            Our Clients
+          %li#nav_about_us
+            %span 
+            About Us
+          %li#nav_contact_us
+            %span 
+            Contact us
+
 
       #main{ :role => 'main' }= yield
       / - if article?(@item)
@@ -61,7 +79,7 @@
     :javascript
       window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')
     
-    -# scripts concatenated and minified
+    -# scripts concatenated and minifiedp
     %script{ :src => "js/plugins.min.js" }
     %script{ :src => "js/script.min.js" }
     -# end scripts

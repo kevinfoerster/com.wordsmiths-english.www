@@ -4,6 +4,7 @@ $turquoise: #24998A;
 $lightBrown: #967E69;
 
 $columnWidth: 220px;
+$borderBoxHorizontalPadding: 20px;
 
 
 .home:nth-child(1){
@@ -57,7 +58,7 @@ h3{
   border-radius: 5px;
   background-color: #F8F3EF;
   box-shadow: 0px 0px 15px lighten($lightBrown, 40%);
-  padding: 22px 20px 16px 20px;
+  padding: 22px $borderBoxHorizontalPadding 16px $borderBoxHorizontalPadding;
   margin-bottom:20px;
   h2{
     text-align:left;
@@ -94,7 +95,9 @@ h3{
   width: 2 * $columnWidth;
   margin:auto
 }
-
+.borderBox.writing_services{
+  width: 3 * $columnWidth - 2 * $borderBoxHorizontalPadding;
+}
 p, dd{
   color: $red;
   font: {
@@ -107,21 +110,40 @@ p, dd{
 
 .additional_services,
 .writing_services{
-  dt{
-    font: 18px/200% 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
-    color: #24998A;
-    width: $columnWidth;
-    display:inline-block;
-    line-height:200%;
-    padding: {
-      left: 10px
-    }
+  dl{
+    position: relative;
+    margin:0;
+    padding:0;
+    width: 3 * $columnWidth;
+  }
+  dt,dd{
     border: {
       radius: 5px;
       width: 1px;
       style: dashed;
       color: #E0D0BF;
     }
+    
   }
+  dt{
+    font: 18px/200% 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
+    color: #24998A;
+    width: $columnWidth;
+    line-height:200%;
+    padding: {
+      left: 0px
+    }
+    margin: {
+      bottom:5px
+    }
+  }
+  dd{
+    float: right;
+    width: 2 * $columnWidth;
+    clear: both;
+    position: absolute;
+    top: 0;
+    right: 0;
 
+  }
 }

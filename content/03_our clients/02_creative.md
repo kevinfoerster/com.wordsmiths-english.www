@@ -1,2 +1,0 @@
-##Creative
-Working in the creative fields of art, media, design, architecture, advertising, writing or public relations, you may be trying to reach your international audience and clients in English, but are looking for the added flair that only a native speaker can offer. You may also be involved in projects where exact English-language communication is essential to your workflow.

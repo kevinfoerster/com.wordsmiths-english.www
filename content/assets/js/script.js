@@ -23,9 +23,7 @@ $(document).ready(function(){
       })
     });
   };
-  
-  
-  
+    
   function replaceHeart() {
     $('*:contains("❤"):last').html($('*:contains("❤"):last').text().replace("❤", "<span id='heart'>❤</span>"))
   };
@@ -35,10 +33,42 @@ $(document).ready(function(){
     $("."+section+"_wrapper:first").addClass('first')
   };
   
+  function setActiveMenuItem(id) {
+    $('#nav>li').removeClass('active');
+    $('#nav>li#nav_'+id).addClass('active');
+  };
+  
+	$('.wrapper').each(function(i) {
+		var position = $(this).position();
+    // console.log(position);
+    // console.log('min: ' + position.top + ' / max: ' + parseInt(position.top + $(this).height()));
+		$(this).scrollspy({
+			min: position.top,
+			max: position.top + $(this).height(),
+			onEnter: function(element, position) {
+
+        elementClass = $(element).attr('class').split(" ");
+        setActiveMenuItem(elementClass[0].substr(0,elementClass[0].length - "_wrapper".length))
+        // if(console) console.log('entering ' +  element.id);
+        // $("body").css('background-color', element.id);
+			},
+			onLeave: function(element, position) {
+        // if(console) console.log('leaving ' +  element.id);
+			//	$('body').css('background-color','#eee');
+			}
+		});
+	});
+  
+  
   addWrapperClasses("home")
   addWrapperClasses("writing_services")
   addWrapperClasses("additional_services")
+  addWrapperClasses("our_clients")
+  addWrapperClasses("about_us")
+  addWrapperClasses("contact_us")
 
   replaceHeart()
   createTabs()
 });
+
+

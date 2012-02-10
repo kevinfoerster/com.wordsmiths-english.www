@@ -63,7 +63,7 @@
             %li#nav_contact_us
               %span 
               Contact us
-
+        #border
 
       #main{ :role => 'main' }= yield
       / - if article?(@item)
@@ -81,8 +81,10 @@
       window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')
     
     -# scripts concatenated and minifiedp
+    %script{ :src => "js/mylibs/jquery-scrollspy.min.js" }
     %script{ :src => "js/plugins.min.js" }
     %script{ :src => "js/script.min.js" }
+
     -# end scripts
 
     -# Change UA-XXXXX-X to be your site's ID

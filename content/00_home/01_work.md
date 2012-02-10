@@ -10,7 +10,7 @@ kind: article
     
     Submit your document and details about how you would like us to help you.	
 
-    > Check our writing services section for more info.
+    > Check our [writing services] [writing_services] section for more info.
 
 2.	##The Evaluation	
     _Individual service for each client._
@@ -31,7 +31,7 @@ kind: article
 
     We will work in cooperation with you until you are happy with our work.	
     
-    > Take a look at what other clients have said about our work.
+    > Take a look at what [other clients] [our_clients] have said about our work.
 
 5.	##The Result	
     _Wrapping up your project with the best results._
@@ -39,3 +39,9 @@ kind: article
     We implement all agreed-upon changes and deliver a clean copy that is ready for you to use.	
     
     > We’ll hope to work with you again in the future!
+    
+
+
+
+[writing_services]: #writing_services
+[our_clients]: #our_clients

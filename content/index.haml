@@ -5,11 +5,12 @@ title: Home
 %section.article
   - sorted_articles_by_filename.each do |article|
     - next if article[:draft]
-    %article{:class => [article[:section], article[:style], "clearfix"]}
-      -if article[:title]
-        %h2= article[:title]
-      -if article[:summary]
-        %h4= article[:summary]
+    %div{:class => [article[:section]+"_wrapper", "wrapper"]}
+      %article{:class => [article[:section], article[:style], "clearfix"]}
+        -if article[:title]
+          %h2= article[:title]
+        -if article[:summary]
+          %h4= article[:summary]
           
-      = article.compiled_content(:rep => :default)
+        = article.compiled_content(:rep => :default)
     

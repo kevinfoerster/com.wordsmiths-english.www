@@ -9,10 +9,10 @@ kind: article
 3-Step Process
 : We have adopted a three-step editing process during which we thoroughly review your work while maintaining an active dialogue with you.
 
-  This process will result in an improved version of your work that retains your personal or professional writing style.
+  > This process will result in an improved version of your work that retains your personal or professional writing style.
 
-  See also:  
-  > 3-Step Process
+  > See also:  
+    [>> 3-Step Process] [3_step_process]
 
 Assistance
 : We assist you as a non-native English speaker with appropriate word choice and phrasing that will improve the fluidity of your text.
@@ -34,3 +34,6 @@ Layout
   See also:  
   > Table and Chart Proofing  
   > Formatting Service
+  
+  
+[3_step_process]: #dont_know

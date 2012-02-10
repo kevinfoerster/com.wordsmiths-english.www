@@ -1,23 +1,69 @@
 // Example index.haml styles.
-$red: #942821;
-$turquoise: #24998A;
-$lightBrown: #967E69;
-$beige: #fbf6f1;
+
+/*all colors needed for text*/
+$headlineRed: #a52107;
+$copyRed: #7b1313;
+$copyTurquise: #229778;
+$copyDarkBeige: #9f7854;
+
+/*not sure where this color is used*/
+$headerRed: #f9f1e8;
+
+/*used for backgrounds*/
+$lightBeige: #fbf6f1;
 $darkBeige: #f7ebdf;
-$nav_turquise: #39ab8d;
+
+$navTurquise: #39ab8d;
 
 $columnWidth: 188px;
 $gutter: 10px;
 
 $borderBoxHorizontalPadding: 20px;
 
+
+
+
+
 $amaranth: 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
-.home:nth-child(1){
+
+.home_wrapper:nth-child(1)>.home{
   width: 3 * $columnWidth;
 }
-.home:nth-child(2){
+.home_wrapper:nth-child(2)>.home{
   width: 5 * $columnWidth + 4 * $gutter;
 }
+
+
+.home_wrapper,
+.additional_services_wrapper{
+  background:$darkBeige;
+  .borderBox{
+    background-color:$lightBeige;
+  }
+}
+.writing_services_wrapper{
+  background:$lightBeige;
+  .borderBox{
+    background-color:$darkBeige;
+  }
+}
+
+
+
+@mixin addWrapperClassesStyles($section) {
+  .#{$section}_wrapper.first{
+    padding-top:40px;
+  }
+  .#{$section}_wrapper.last{
+    padding-bottom:40px;
+  }
+}
+
+@include addWrapperClassesStyles(home);
+@include addWrapperClassesStyles(writing_services);
+@include addWrapperClassesStyles(additional_services);
+
+
 
 .additional_services,
 .writing_services{
@@ -27,7 +73,8 @@ $amaranth: 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
 
 
 body {
-  padding-top:133px;
+  padding-top:93px;
+  background-color:$darkBeige;
 }
 
 h1{
@@ -35,7 +82,8 @@ h1{
 }
 
 h2{
-  color: $red !important;
+  margin-top:0;
+  color: $headlineRed !important;
   font: 18px/200% $amaranth;
   text:{
     shadow: rgba(0, 0, 0, .15) 0px -1px 1px, rgba(255, 255, 255, .6) 0px 0px 1px, rgba(255, 255, 255, 0.4) 0 1px 1px;
@@ -56,9 +104,10 @@ h3{
 }
 
 h4{
-  color: $lightBrown;
+  color: $copyDarkBeige;
   text-align:center;
   display:block;
+  margin-top:0;
   padding-bottom:12px;
   background:{
     image: url(../img/arrow_down.png);
@@ -73,8 +122,19 @@ h4{
     weight: normal;
   }
 }
+blockquote,
+blockquote>p {
+  @extend h4;
+  background-image:none;
+  text-align:left;
+  margin:0;
+  padding:0;
+}
 
-
+a:link,
+a:visited{
+  color: $copyTurquise;
+}
 header{
   width:100%;
   z-index:2;
@@ -84,7 +144,7 @@ header{
     display:block;
   }  
   background:{
-    color: $beige;
+    color: $lightBeige;
     image: url(../img/header_edge.png);
     repeat: repeat-x;
     position: bottom left;
@@ -97,12 +157,9 @@ header{
 }
 
 
-
-
-
-
-
-
+.wrapper{
+  width:100%;
+}
 @mixin mainMenuNav($section) {
   li#nav_#{$section} {
     background: {
@@ -130,7 +187,7 @@ header{
     text-align:center;
     vertical-align:top;
     font: 16px/200% $amaranth;
-    color: $nav_turquise;
+    color: $navTurquise;
     float:left;
     height:70px;
     padding:0 10px;
@@ -166,15 +223,15 @@ header{
 .writing_services,
 .additional_services{
   margin:auto;
+  padding-top:20px;
 }
 
 .borderBox{
-  border: 1px solid lighten($lightBrown, 30%);
+  border: 1px solid lighten($copyDarkBeige, 30%);
   border-radius: 5px;
   background-color: #F8F3EF;
-  box-shadow: 0px 0px 15px lighten($lightBrown, 40%);
+  box-shadow: 0px 0px 15px lighten($copyDarkBeige, 40%);
   padding: 22px $borderBoxHorizontalPadding 16px $borderBoxHorizontalPadding;
-  margin-bottom:20px;
   h2{
     text-align:left;
   }
@@ -185,6 +242,8 @@ header{
   h2{
     font-size: 32px;
     line-height:106%;
+    color:$headerRed;
+    margin-top:14px;
     #heart{
       background:{
         image:url(../img/heart.png);
@@ -201,7 +260,11 @@ header{
   ol{
     width: 5 * $columnWidth + 4 * $gutter;
     padding:0;
+    counter-reset:item;
     li:before{
+      content: counter(item);
+      counter-increment: item;
+      
       background:{
         image: url(../img/step_bg.png)
       }
@@ -216,8 +279,6 @@ header{
         right:5px;
       }
     
-      content: counter(item);
-      counter-increment: item;
       font-weight: bold;
       font-family: $amaranth;
       color: white;
@@ -227,7 +288,6 @@ header{
     
     }
     li{
-
       list-style-type: none;
       float:left;
       width: $columnWidth;
@@ -240,6 +300,7 @@ header{
       }
       em{
         @extend h4;
+        margin-top:-12px;
         font-size:11px;
         text-align:left;
         background-image: url(../img/arrow_right.png)
@@ -258,7 +319,7 @@ header{
   width: 3 * $columnWidth - 2 * $borderBoxHorizontalPadding;
 }
 p, dd{
-  color: $red;
+  color: $copyRed;
   font: {
     family: Nobile, sans-serif;
     size: 13px;
@@ -267,23 +328,23 @@ p, dd{
   
 }
 
-.writing_services{
-  >h2{
-    background: {
-      image: url(../img/writing_large_visual.png);
+
+@mixin sectionHeading($section) {
+  .#{$section}{
+    >h2{
+      background: {
+        image: url(../img/#{$section}_heading.png);
+      }
+      padding-top:84px;
     }
-    padding-top:84px;
   }
 }
 
-.additional_services{
-  h2{
-    background: {
-      image: url(../img/additional_large_visual.png);
-    }
-    padding-top:101px;
-  }
-}
+@include sectionHeading(writing_services);
+@include sectionHeading(additional_services);
+@include sectionHeading(our_clients);
+@include sectionHeading(about_us);
+@include sectionHeading(contact_us);
 
 .additional_services,
 .writing_services{

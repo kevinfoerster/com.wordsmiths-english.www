@@ -30,6 +30,15 @@ $(document).ready(function(){
     $('*:contains("❤"):last').html($('*:contains("❤"):last').text().replace("❤", "<span id='heart'>❤</span>"))
   };
   
+  function addWrapperClasses(section) {
+    $("."+section+"_wrapper:last").addClass('last')
+    $("."+section+"_wrapper:first").addClass('first')
+  };
+  
+  addWrapperClasses("home")
+  addWrapperClasses("writing_services")
+  addWrapperClasses("additional_services")
+
   replaceHeart()
   createTabs()
 });

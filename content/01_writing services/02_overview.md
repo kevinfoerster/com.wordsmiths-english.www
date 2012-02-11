@@ -17,23 +17,29 @@ kind: article
 Assistance
 : We assist you as a non-native English speaker with appropriate word choice and phrasing that will improve the fluidity of your text.
 
-  We ensure coherence and that your argument has a logical structure.
+  > We ensure coherence and that your argument has a logical structure.
 
 Correction
 : Carefully reviewing your documents, we detect any errors in spelling, punctuation and grammar. 
 
-  See also:  
-  > Fact-checking service  
-  > Method of work
+  > See also:  
+    [>> Fact-checking service] [fact_checking_service]  
+    [>> Method of work] [method_of_work]
 
 Layout
 : We check different elements of your document’s layout such as headlines, paragraphs, figures and illustrations.
 
-  There is an extra charge for this service.
+  > There is an extra charge for this service.
 
-  See also:  
-  > Table and Chart Proofing  
-  > Formatting Service
+  > See also:  
+    [>> Table and Chart Proofing] [table_and_chart_proofing]  
+    [>> Formatting Service] [formatting_services]
   
   
 [3_step_process]: #dont_know
+
+[fact_checking_service]: #dont_know
+[method_of_work]: #dont_know
+
+[table_and_chart_proofing]: #dont_know
+[formatting_services]: #dont_know

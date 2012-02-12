@@ -27,7 +27,7 @@ end
 compile '/assets/js/*/' do
   # only minify if it's not already minified
   unless MINIFIED_JS_RE.match(item[:extension])
-    filter :uglify_js
+    # filter :uglify_js
   end
 end
 

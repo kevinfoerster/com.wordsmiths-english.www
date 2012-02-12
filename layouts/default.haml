@@ -20,10 +20,12 @@
     %meta{ :name => "generator", :content => "nanoc 3.2.3" }
     
     -# Mobile viewport optimized: j.mp/bplateviewport
-    %meta{ :name => "viewport", :content => "width=device-width,initial-scale=1" }
+    %meta{ :name => "viewport", :content => "width=device-width,initial-scale=1, maximum-scale=1.0, user-scalable=0;" }
+    %meta{:name => "apple-mobile-web-app-capable", :content=>"yes"}
+    %meta{:name => "apple-mobile-web-app-status-bar-style", :content=>"black"}
     
     -# Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons
-
+    %link{:rel=>"icon", :type=>"image/png", :href=>"favicon.png"}
     -# CSS: implied media=all
     -# CSS concatenated and minified
     %link{ :rel => "stylesheet", :href => "css/style.css" }
@@ -43,10 +45,9 @@
   %body
 
     #container
-
       %header.clearfix
         #navigationWrapper
-          %img{:src => 'img/logo.png'}
+          %img#logo{:src => 'img/logo.png'}
           %ul#nav.clearfix
             %li#nav_writing_services
               %span 
@@ -81,7 +82,8 @@
       window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')
     
     -# scripts concatenated and minifiedp
-    %script{ :src => "js/mylibs/jquery-scrollspy.min.js" }
+    %script{ :src => "js/mylibs/jquery-scrollSpy.min.js" }
+    %script{ :src => "js/mylibs/jquery-scrollTo.min.js" }
     %script{ :src => "js/plugins.min.js" }
     %script{ :src => "js/script.min.js" }
 

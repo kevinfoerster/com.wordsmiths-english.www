@@ -6,10 +6,8 @@ $copyRed: #7b1313;
 $copyTurquise: #229778;
 $copyDarkBeige: #9f7854;
 
-/*not sure where this color is used*/
-$headerRed: #f9f1e8;
-
 /*used for backgrounds*/
+$headerBeige: #f9f1e8;
 $lightBeige: #fbf6f1;
 $darkBeige: #f7ebdf;
 /*$darkBeige: red;*/
@@ -20,11 +18,75 @@ $gutter: 10px;
 
 $borderBoxHorizontalPadding: 20px;
 
-
-
-
-
 $amaranth: 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
+
+$color: "transparent";
+@mixin borderBox($type, $backgroundColor) {
+  border-radius: 5px;
+  background-color: red;
+  background: $backgroundColor;
+  @if $type == "dashed" {
+      border: 1px dashed lighten($copyDarkBeige, 30%);
+      box-shadow:none;
+  }@elseif $type == "solid"{
+      border: 1px solid lighten($copyDarkBeige, 30%);
+      box-shadow: 2px 2px 4px lighten($copyDarkBeige, 40%);
+      
+  }
+}
+
+@mixin addWrapperClassesStyles($section) {
+  .#{$section}_wrapper.first{
+    padding-top:40px;
+  }
+  .#{$section}_wrapper.last{
+    padding-bottom:40px;
+  }
+}
+
+@mixin mainMenuNav($section) {
+  li#nav_#{$section} {
+    background: {
+      image: url(../img/nav/#{$section}_bg.png);
+    }
+    span{
+      background-image: url(../img/nav/#{$section}.png);
+    }
+  }
+}
+
+
+@mixin sectionHeading($section) {
+  .#{$section}{
+    >h2{
+      background: {
+        image: url(../img/#{$section}_heading.png);
+      }
+      padding-top:84px;
+    }
+  }
+}
+
+@include addWrapperClassesStyles(home);
+@include addWrapperClassesStyles(writing_services);
+@include addWrapperClassesStyles(additional_services);
+@include addWrapperClassesStyles(our_clients);
+@include addWrapperClassesStyles(about_us);
+@include addWrapperClassesStyles(contact_us);
+
+@include mainMenuNav(writing_services);
+@include mainMenuNav(additional_services);
+@include mainMenuNav(our_clients);
+@include mainMenuNav(about_us);
+@include mainMenuNav(contact_us);
+
+@include sectionHeading(writing_services);
+@include sectionHeading(additional_services);
+@include sectionHeading(our_clients);
+@include sectionHeading(about_us);
+@include sectionHeading(contact_us);
+
+
 
 .home_wrapper:nth-child(1)>.home{
   width: 3 * $columnWidth + 2 * $gutter;
@@ -37,48 +99,36 @@ $amaranth: 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
 .home_wrapper,
 .additional_services_wrapper{
   background:$darkBeige;
-  .borderBox{
+/*  .borderBox{
     background-color:$lightBeige;
-  }
+  }*/
 }
 .writing_services_wrapper,
 .our_clients_wrapper,
 .contact_us_wrapper{
   background:$lightBeige;
-  .borderBox{
+/*  .borderBox{
     background-color:$darkBeige;
-  }
+  }*/
 }
 
 
 
-@mixin addWrapperClassesStyles($section) {
-  .#{$section}_wrapper.first{
-    padding-top:40px;
-  }
-  .#{$section}_wrapper.last{
-    padding-bottom:40px;
-  }
-}
 
-@include addWrapperClassesStyles(home);
-@include addWrapperClassesStyles(writing_services);
-@include addWrapperClassesStyles(additional_services);
-@include addWrapperClassesStyles(our_clients);
-@include addWrapperClassesStyles(about_us);
-@include addWrapperClassesStyles(contact_us);
 
 
 
 
 .additional_services,
-.writing_services{
+.writing_services,
+.imprint{
   width: 3 * $columnWidth + 2 * $gutter;
   z-index:1;
 }
 
 .our_clients,
-.about_us{
+.about_us,
+.contact_us{
  width: 5 * $columnWidth + 4 * $gutter;
 }
 
@@ -114,12 +164,26 @@ $amaranth: 'Amaranth', Tahoma, Verdana, Segoe, sans-serif;
     margin:0;
     list-style-type:none;
     li{
-  
-      top:280px;
+      top:265px;
+      text-align:center;
       h3{
-        text-align:left;
+        text-align:center;
+        font-size:34px;
+        margin:0;
+        line-height:1em;
       }
       position:absolute;
+    }
+    p{
+      color: $copyDarkBeige;
+    }
+    a{
+      background: {
+        image:url(../img/icons/linkedIn.png);
+        position: bottom center;
+        repeat:no-repeat;
+      };
+      padding-bottom:22px;
     }
     li:nth-child(1){
       left:230px;
@@ -157,7 +221,12 @@ h2{
 
 
 h3{
-  @extend h2;
+  color: $headlineRed !important;
+  font: 18px/200% $amaranth;
+  text:{
+    shadow: rgba(0, 0, 0, .15) 0px -1px 1px, rgba(255, 255, 255, .6) 0px 0px 1px, rgba(255, 255, 255, 0.4) 0 1px 1px;
+    align: left;
+  }
   background:none !important;
   height:auto;
   padding:0 !important;
@@ -197,14 +266,14 @@ a:visited{
 }
 header{
   width:100%;
-  z-index:2;
+  z-index:3;
   #navigationWrapper{
     width: 5 * $columnWidth + 4 * $gutter;
     margin:auto;
     display:block;
   }  
   background:{
-    color: $headerRed;
+    color: $headerBeige;
     position: bottom left;
   }
 
@@ -233,22 +302,7 @@ header{
   width:100%;
   padding-bottom:20px;
 }
-@mixin mainMenuNav($section) {
-  li#nav_#{$section} {
-    background: {
-      image: url(../img/nav/#{$section}_bg.png);
-    }
-    span{
-      background-image: url(../img/nav/#{$section}.png);
-    }
-  }
-}
 
-@include mainMenuNav(writing_services);
-@include mainMenuNav(additional_services);
-@include mainMenuNav(our_clients);
-@include mainMenuNav(about_us);
-@include mainMenuNav(contact_us);
 
 #nav{
   height:95px;
@@ -301,16 +355,17 @@ header{
 .writing_services,
 .additional_services,
 .about_us,
-.our_clients{
+.our_clients,
+.contact_us,
+.imprint{
   margin:auto;
 /*  padding-top:20px;*/
 }
 
+
+
 .borderBox{
-  border: 1px solid lighten($copyDarkBeige, 30%);
-  border-radius: 5px;
-  background-color: #F8F3EF;
-  box-shadow: 0px 0px 15px lighten($copyDarkBeige, 40%);
+/*  @include borderBox(solid, red);*/
   padding: 22px $borderBoxHorizontalPadding 16px $borderBoxHorizontalPadding;
   width: 3 * $columnWidth + 2 * $gutter - 2 * $borderBoxHorizontalPadding;
   h2{
@@ -319,11 +374,13 @@ header{
 }
 
 .home{
-  background-color:$darkBeige;
+  &.borderBox {
+    @include borderBox(solid, $lightBeige)
+  }
+    
   h2{
     font-size: 32px;
     line-height:106%;
-    color:$headerRed;
     margin-top:14px;
     #heart{
       background:{
@@ -390,6 +447,7 @@ header{
   }
 }
 
+
 .home.borderBox>p,
 .home.borderBox>h2{
   text-align:center;
@@ -408,22 +466,34 @@ p, dd{
 }
 
 
-@mixin sectionHeading($section) {
-  .#{$section}{
-    >h2{
-      background: {
-        image: url(../img/#{$section}_heading.png);
-      }
-      padding-top:84px;
+
+.writing_services{
+  &.borderBox {
+    @include borderBox(solid, $darkBeige);
+  }
+  dt{
+    &.active{
+      @include borderBox(solid, $darkBeige);
+    }
+    &:hover{
+      @include borderBox(solid, $darkBeige);
+    }
+  }  
+}
+
+.additional_services{
+  &.borderBox {
+    @include borderBox(solid, $lightBeige);
+  }
+  dt{
+    &.active{
+      @include borderBox(solid, $lightBeige);
+    }
+    &:hover{
+      @include borderBox(solid, $lightBeige);
     }
   }
 }
-
-@include sectionHeading(writing_services);
-@include sectionHeading(additional_services);
-@include sectionHeading(our_clients);
-@include sectionHeading(about_us);
-@include sectionHeading(contact_us);
 
 .additional_services,
 .writing_services{
@@ -434,15 +504,42 @@ p, dd{
     width: 3 * $columnWidth + 2 * $gutter;
   }
   dt,dd{
-    border: {
-      radius: 5px;
-      width: 1px;
-      style: dashed;
-      color: #E0D0BF;
-    }
+    @include borderBox(dashed, transparent);
+    -webkit-transition: all 0.2s ease-in-out;
     margin-bottom:20px;
   }
   dt{
+    position: relative;
+    height:35px;
+    span{
+      position:absolute;
+      z-index:2;
+      line-height:34px;
+      display:block;
+      width:100%;
+    }
+    canvas{
+      -webkit-transition: opacity 0.2s ease-in-out;
+      position:absolute;
+      top:-1px;
+      left:-2px;
+      z-index:1;
+      opacity:0;
+    }
+    &:hover{
+      border: 1px solid transparent;
+      background-color:transparent;
+      canvas{
+        opacity: 1;
+      }
+    }
+    &.active{
+      border: 1px solid transparent;
+      background-color:transparent;
+      canvas{
+        opacity: 1;
+      }
+    }
     font: 15px/200% $amaranth;
     color: #24998A;
     width: $columnWidth - 12px;
@@ -467,11 +564,293 @@ p, dd{
 }
 
 
-.contact_us_wrapper>article{
-  border: {
-    radius: 5px;
-    width: 1px;
-    style: dashed;
-    color: #E0D0BF;
+.contact_us{
+  .contactBox{
+    @include borderBox(dashed, transparent);
+    width: 1.7 * $columnWidth - 2* $borderBoxHorizontalPadding - 10px;
+    float: right;
+    h4{
+      text-align:left;
+      background-position:left bottom;
+    }
+    
+    li{
+      font-size:11px;
+      color: $copyTurquise;
+      background:{
+        repeat:no-repeat;
+        position: left center;
+      };
+      padding-left: 30px;
+      line-height: 20px;
+      margin-bottom: 4px;
+      &.mail{
+        background: {
+          image:url(../img/icons/mail.png)
+        };
+      }
+      &.linkedIn{
+        background: {
+          image:url(../img/icons/linkedIn.png)
+        };
+      }
+      &.phone{
+        background: {
+          image:url(../img/icons/phone.png)
+        };
+      }
+      
+    }
+    
+  }
+    
+  form{
+    @include borderBox(solid, $darkBeige);
+    padding: 22px $borderBoxHorizontalPadding 16px $borderBoxHorizontalPadding;
+    float:left;
+    width: 3.4* $columnWidth + $gutter - 2 * $borderBoxHorizontalPadding + $gutter/2;
+  }
+  
+  ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    label{
+      @extend h4;
+      background:none;
+      text-align:left;
+    }
+    li#foli1,
+    li#foli3{
+      float:left;
+    }
+    li#foli2,
+    li#foli4{
+      float:right;
+    }
+    li#foli1,
+    li#foli2,
+    li#foli3,
+    li#foli4 {
+      width:floor(1.7 * $columnWidth + 2 - $borderBoxHorizontalPadding);
+
+/*      float:left;*/
+      label{
+        width:80px;
+        height:20px;
+        line-height:20px;
+        float:left;
+        display:block;
+        text-align:right;
+        padding-right:5px;
+      }
+    }
+    li#foli5{
+      float:none;
+      clear:both;
+      width:100%;
+      display:block;
+      margin-bottom:15px;
+      label{
+        padding-bottom:3px;
+      }
+    }
+    input, textarea{
+      border: 1px solid #F1C2AA;
+      background: white;
+/*      width:100%;*/
+    }
+    
+    textarea{
+      width: ($columnWidth * 2 * 1.7) + $gutter - (2 * $borderBoxHorizontalPadding) - 2;
+    }
+    
+    .buttons{
+      label{
+        text-align:right;
+        width:50%;
+        float:right;
+        line-height:28px;
+        padding-right:5px;
+      }
+      #saveForm{
+        @include borderBox(dashed, $darkBeige);
+        height:30px-7px;
+        float:right;
+        text-transform: uppercase;
+        font-family: $amaranth;
+        color: $copyTurquise;
+      }
+    }
+    
   }
 }
+.imprint_wrapper.first{
+    border-top: 6px solid #33B2A2;
+}
+.imprint {
+  font-size: 11px;
+  font-weight: normal;
+  font-style: normal;
+  h2 {
+    position:relative;
+    top:-18px;
+    color: white !important;
+    cursor: pointer;
+    text-align: center;
+    font-size: 11px;
+    background-image: url(../img/imprint_background.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    height: 12px;
+    border-bottom: 6px solid #33B2A2;
+  }
+  
+
+  h3{
+    text-align:left;
+    border:0;
+    color: $copyTurquise !important;
+    font-family: $amaranth;
+    font-size: 14px;
+    line-height: 38px;
+    position: relative;
+    top:0px;
+    margin:0;
+  }
+
+  h4{
+    text-align:left;
+    background:none;
+    color: $copyTurquise;
+    margin:0;
+    position: relative;
+    top:0px;
+    
+  }
+  p,
+  address{
+/*    @extend blockquote;*/
+    font-size:11px;
+    margin-bottom:2em;
+    color: $copyDarkBeige;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  body{
+    padding-top:200px;
+  }
+  header{
+    #navigationWrapper{
+      width: 100%;
+      text-align: center;
+      overflow:hidden;
+      #logo{
+        width: 268px;
+        display:block;
+        margin:auto !important;
+        position:static;
+      }
+      ul { 
+        list-style: none; 
+        position: relative; 
+        float: left; 
+        display: block; 
+        left: 50%; 
+        li { 
+          position: relative; 
+          float: left; 
+          display: block; 
+          right: 50%;}
+      }
+      
+      
+/*      #nav{
+        float:none;
+        clear:both;
+        list-style-type: none;
+        
+        li{
+          float:none;
+          clear:both;
+          display:inline;
+        }
+      }
+*/
+
+
+    }
+    #border{
+      top:210px;
+    }
+    
+  }
+  .home_wrapper:nth-child(2)>.home{
+    width: 3 * $columnWidth + 2 * $gutter;
+    ol{
+      width: 3 * $columnWidth + 2 * $gutter;
+    }
+    li{
+      width: 3 * $columnWidth + 2 * $gutter;
+      em{
+        background-position:bottom left;
+      }
+    }
+  }
+  
+  .our_clients{
+    width: 3 * $columnWidth + 2 * $gutter;
+    ul{
+      li{
+        list-style-type:none;
+        width: 3 * $columnWidth + 2 * $gutter;
+      }
+    }
+  }
+
+  .about_us{
+    width: 3 * $columnWidth + 2 * $gutter;
+    img{
+/*      width: 3 * $columnWidth + 2 * $gutter;*/
+      margin:0;
+      display:none;
+    }
+    ul{
+      position:static;
+      margin:0;
+      list-style-type:none;
+      li{
+        width: (3 * $columnWidth + 2 * $gutter)/2;
+        position:static;
+        text-align:left;
+        float:left;
+        h3{
+          text-align:left;
+          font-size:34px;
+          margin:0;
+          line-height:1em;
+        }
+      }
+    }
+  }
+  .contact_us{
+/*    width: 4 * $columnWidth + 3 * $gutter;*/
+    width:100%;
+    form{
+      
+      float:none;
+      clear:both;
+      margin:auto !important;
+
+    }
+    .contactBox{
+      float:none;
+      clear:both;
+      margin:auto;
+      margin-top:20px;
+    }  
+  }
+}
+

@@ -19,6 +19,8 @@ kind: article
 
 ![a glimpse of who we are][image]
 
+
+
 [image]: img/about_us_items.png  "a glimpse of who we are"
 
 [jodis_profile]: http://linkedin.com

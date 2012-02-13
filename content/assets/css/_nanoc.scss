@@ -737,7 +737,7 @@ p, dd{
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1023px) {
   
   body{
     padding-top:200px;
@@ -747,12 +747,15 @@ p, dd{
       width: 100%;
       text-align: center;
       overflow:hidden;
+
       #logo{
+        padding-left: 60px;
         width: 268px;
         display:block;
         margin:auto !important;
         position:static;
       }
+
       ul { 
         list-style: none; 
         position: relative; 
@@ -765,22 +768,6 @@ p, dd{
           display: block; 
           right: 50%;}
       }
-      
-      
-/*      #nav{
-        float:none;
-        clear:both;
-        list-style-type: none;
-        
-        li{
-          float:none;
-          clear:both;
-          display:inline;
-        }
-      }
-*/
-
-
     }
     #border{
       top:210px;
@@ -854,3 +841,126 @@ p, dd{
   }
 }
 
+
+@media screen and (max-width: 768px) {
+  body{
+    padding-top:0;
+  }
+  
+  
+  .wrapper{
+    width:100%;
+  }
+  
+  .home_wrapper:nth-child(1) > .home,
+  .home_wrapper:nth-child(2) > .home  {
+    width: 80%;
+  }
+  .home_wrapper:nth-child(2) > .home ol,
+  .home_wrapper:nth-child(2) > .home li{
+    width:100%;
+  }
+  .home.borderBox > p, 
+  .home.borderBox > h2 {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+  }
+  
+  .additional_services, 
+  .writing_services, 
+  .imprint,
+  .our_clients,
+  .about_us,
+  .contact_us form{
+  width: 80%;
+  z-index: 1;
+  }
+  
+  .additional_services dl,
+  .writing_services dl {
+    width:100%;
+  }
+  .additional_services dt, 
+  .writing_services dt,
+  .additional_services dd, 
+  .writing_services dd {
+    width:100%;
+    float:none;
+    clear:both;
+    position:static;
+    border:none;
+    &:hover{
+      box-shadow:none
+    };
+    &.hidden{
+      display:block !important;
+      visibility:visible;
+    }
+    
+  }
+  .additional_services dd, 
+  .writing_services dd {
+    width:80%;
+  }  
+  
+  .our_clients ul li{
+    width:90%;
+  }
+  
+  .contact_us {
+    form{
+      li#foli1,li#foli2,li#foli3,li#foli4{
+          float:right;
+      }
+      textarea{
+        width:100%;
+      }
+    }
+  }
+
+  header{
+    position:static;
+    #navigationWrapper{
+      height:auto;
+      widht:100%;
+      overflow: hidden;
+      
+      ul{
+        float:none;
+        position:static;
+        li{
+          -webkit-background-size: contain;
+          -moz-background-size: contain;
+          -o-background-size: contain;
+          background-size: contain;
+          
+          position:static;
+          float:none;
+          clear:both;
+          line-height:100px;
+          line-height: 60px;
+          height: 60px;
+          text-align: left;
+
+          background-position:left center;
+          span{
+            height: 60px;
+            width: 65px;
+            position: relative;
+            left: -10px;
+            float:left;
+            -webkit-background-size: contain;
+            -moz-background-size: contain;
+            -o-background-size: contain;
+            background-size: contain;
+          }
+        }
+      }
+    }
+    #border{
+      position: relative;
+      top: 48px;
+    }
+  }
+}

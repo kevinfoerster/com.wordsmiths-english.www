@@ -9,9 +9,9 @@ kind: article
 ###Angaben gemäß § 5 TMG:
 
 <address>
-  Wordsmiths GbR
-  c/o Stolzenbach
-  Alsterdorfer Straße 15
+  Wordsmiths GbR<br/>
+  c/o Stolzenbach<br/>
+  Alsterdorfer Straße 15<br/>
   22299 Hamburg
 </address>
 

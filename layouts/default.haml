@@ -50,20 +50,25 @@
           %img#logo{:src => 'img/logo.png'}
           %ul#nav.clearfix
             %li#nav_writing_services
-              %span 
-              Writing services
+              %a{:href => "#writing_services"}
+                %span 
+                Writing services
             %li#nav_additional_services
-              %span 
-              Additional services
+              %a{:href => "#additional_services"}
+                %span 
+                Additional services
             %li#nav_our_clients
-              %span 
-              Our Clients
+              %a{:href => "#our_clients"}
+                %span 
+                Our Clients
             %li#nav_about_us
-              %span 
-              About Us
+              %a{:href => "#about_us"}
+                %span 
+                About Us
             %li#nav_contact_us
-              %span 
-              Contact us
+              %a{:href => "#contact_us"}
+                %span 
+                Contact us
         #border
 
       #main{ :role => 'main' }= yield
@@ -77,15 +82,18 @@
 
     -# JavaScript at the bottom for fast page loading
     -# Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline
+    %script{ :src => "http://localhost:8001/vogue-client.js"}
     %script{ :src => "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" }
     :javascript
       window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')
     
     -# scripts concatenated and minifiedp
+
     %script{ :src => "js/mylibs/jquery-scrollSpy.min.js" }
     %script{ :src => "js/mylibs/jquery-scrollTo.min.js" }
     %script{ :src => "js/plugins.min.js" }
     %script{ :src => "js/script.min.js" }
+
 
     -# end scripts
 

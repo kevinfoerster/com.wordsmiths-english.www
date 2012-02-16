@@ -5,6 +5,8 @@ title: Home
 %section.article
   - sorted_articles_by_filename.each do |article|
     - next if article[:draft]
+    -if article[:title]
+      %a{:name => article[:section]}
     %div{:class => [article[:section]+"_wrapper", "wrapper"]}
       %article{:class => [article[:section], article[:style], "clearfix"]}
         -if article[:title]
@@ -13,4 +15,4 @@ title: Home
           %h4= article[:summary]
           
         = article.compiled_content(:rep => :default)
-    
+        

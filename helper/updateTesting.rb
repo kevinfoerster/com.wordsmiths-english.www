@@ -6,8 +6,8 @@ require 'em-websocket'
 client  = 'com.wordsmiths.www'
 dropbox = "/Users/kevin/Dropbox/Public/"+client
 
-
-
+FileUtils.rm_r("#{dropbox}")
+FileUtils.cp_r("../output/", "#{dropbox}/")
 
 @sockets = []
 FSSM.monitor('../output/', '**/*') do

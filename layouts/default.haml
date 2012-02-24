@@ -43,7 +43,7 @@
     
     
   %body
-
+    %ul#buttons
     #container
       %header.clearfix
         #navigationWrapper
@@ -82,18 +82,21 @@
 
     -# JavaScript at the bottom for fast page loading
     -# Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline
-    %script{ :src => "http://localhost:8001/vogue-client.js"}
     %script{ :src => "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" }
     :javascript
       window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')
-    
-    -# scripts concatenated and minifiedp
 
+    :javascript
+      document.write('<script src="http://'+location.hostname+':8001/vogue-client.js"><\/script>')
+
+    / %script{ :src => "http://localhost:8001/vogue-client.js"}
+
+    -# scripts concatenated and minifiedp
     %script{ :src => "js/mylibs/jquery-scrollSpy.min.js" }
     %script{ :src => "js/mylibs/jquery-scrollTo.min.js" }
+    %script{ :src => "js/mylibs/jquery-history.adapter.min.js" }
     %script{ :src => "js/plugins.min.js" }
     %script{ :src => "js/script.min.js" }
-
 
     -# end scripts
 

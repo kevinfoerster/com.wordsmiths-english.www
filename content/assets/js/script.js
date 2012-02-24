@@ -2,6 +2,8 @@
 
 */
 var imprintVisible = false;
+var lightBeige     = "#fbf6f1";
+var darkBeige      = "#f7ebdf";
 
 function replaceHeart() {
   $('*:contains("❤"):last').html($('*:contains("❤"):last').text().replace("❤", "<span id='heart'>❤</span>"))
@@ -16,26 +18,28 @@ function setActiveMenuItem(id) {
   $('#nav>li').removeClass('active');
   $('#nav>li#nav_'+id).addClass('active');
 };
-
-function scrollToSection(section) {
+function setupScrollToSection(section) {
   offset = -140;
   
   if (window.innerWidth <= 768) {
     offset = -230;
   };
-  
-  
   if (section == 'home') {
     $('#logo').click(function() {
-      $.scrollTo( $('.'+ section +':first'), 300, {offset:{top: getTopOffset()}});
-      console.log( {offset:{top: getTopOffset()}})
+      event.preventDefault();
+      scrollToSection(section)
     })
   };
+  
   $('#nav_'+section).click(function(event) {
     event.preventDefault();
-    $.scrollTo( $('.'+ section +':first'), 300, {offset:{top: getTopOffset()}});
-    console.log( {offset:{top: getTopOffset()}})
+    scrollToSection(section)
   })
+  
+};
+function scrollToSection(section) {
+  $.scrollTo( $('.'+ section +':first'), 300, {offset:{top: getTopOffset()}});
+  // console.log( {offset:{top: getTopOffset()}})  
 };
 
 function createTabs() {
@@ -73,7 +77,7 @@ function getTopOffset() {
   return padding.substring(0, padding.length -2 ) * -1
 };
 
-var roundedRect=function(ctx,x,y,width,height,radius,fill,stroke)
+var roundedRect=function(ctx,x,y,width,height,radius,fill,stroke, tailPosition)
 {
     ctx.save();	// save the context so we don't mess up others
     ctx.beginPath();
@@ -81,10 +85,13 @@ var roundedRect=function(ctx,x,y,width,height,radius,fill,stroke)
     // draw top and top right corner
     ctx.moveTo(x+radius,y+0.5);
     ctx.arcTo(x+width,y+0.5,x+width+0.5,y+radius,radius);
-            
-    ctx.lineTo(x+width+0.5, y+height/2-4+0.5)
-    ctx.lineTo(x+width+4+0.5,y+height/2+0.5)
-    ctx.lineTo(x+width+0.5,y+height/2+4+0.5)
+    
+    if (tailPosition == "right") {
+      ctx.lineTo(x+width+0.5, y+height/2-4+0.5)
+      ctx.lineTo(x+width+4+0.5,y+height/2+0.5)
+      ctx.lineTo(x+width+0.5,y+height/2+4+0.5)      
+    };
+    
     
     // ctx.quadraticCurveTo(x+width, y+height/2, x+width+5, y+height/2);
     // ctx.quadraticCurveTo(x+width, y+height/2, x+width, y+height/2+5);
@@ -96,6 +103,14 @@ var roundedRect=function(ctx,x,y,width,height,radius,fill,stroke)
             
     // draw right side and bottom right corner
     ctx.arcTo(x+width+0.5,y+height+0.5,x+width-radius,y+height+0.5,radius); 
+
+    if (tailPosition == "bottom") {
+      tailSize = 4;
+      pixelPrecision = 0.5
+      ctx.lineTo(x+width/2+tailSize+pixelPrecision,   y+height+pixelPrecision)
+      ctx.lineTo(x+width/2+pixelPrecision,            y+height+pixelPrecision+tailSize)
+      ctx.lineTo(x+width/2-tailSize+pixelPrecision,   y+height+pixelPrecision)
+    };
 
     // draw bottom and bottom left corner
     ctx.arcTo(x-0.5,y+height+0.5,x+0.5,y+height-radius+0.5,radius);
@@ -118,33 +133,75 @@ var roundedRect=function(ctx,x,y,width,height,radius,fill,stroke)
     ctx.restore();// restore context to what it was on entry
 }
 
+var drawBox = function(element, key, width, widthOffset, height, fillColor, strokeColor, tailPosition) {
+        $(element).append('<canvas id="canvas'+key+'"></canvas>');
+
+        var canvas=document.getElementById("canvas"+key);
+        canvas.setAttribute('width', width+22);
+        canvas.setAttribute('height', height+7);
+
+        var context           = canvas.getContext('2d');
+
+        context.strokeStyle   = strokeColor;
+        context.fillStyle     = fillColor;
+    
+        context.lineWidth     = 1;
+        context.shadowColor   = "#f"
+        context.shadowOffsetX = 0;
+        context.shadowOffsetY = 0;
+        context.shadowBlur    = 10;
+
+        roundedRect(context,1,0,width+widthOffset,height+1,4,true,true, tailPosition);
+      };
+
 
 $(document).ready(function(){
   replaceHeart()
   createTabs()
+  sections    = ['home', 'writing_services', 'additional_services', 'our_clients', 'about_us', 'contact_us', 'imprint'];  
   
+  $(".home>ol>li:last").addClass('lastChild')
+  $(".our_clients li:last").addClass('lastChild')
+  
+  // checking if this is a pushstate url and scrolling to corresponding section
+  currentPage = location.href.split("/")[location.href.split("/").length-1]
+  index       = sections.indexOf(currentPage)
+  if (index != -1) {
+    // scrollToSection(currentPage);
+    window.scrollTo(0,$('.'+currentPage+':first').offset().top+getTopOffset())
+  };
+  
+  $.each(sections, function(key, section) {
+    addWrapperClasses(section)    
+    setupScrollToSection(section)
+  })
+
   $('.wrapper').each(function(i) {
     var position = $(this).position();
+    
+    var offset = getTopOffset();
+
     $(this).scrollspy({
-      min: position.top,
-      max: position.top + $(this).height(),
+      min: position.top + offset,
+      max: position.top + $(this).height() + offset,
       onEnter: function(element, position) {
         elementClass = $(element).attr('class').split(" ");
-        setActiveMenuItem(elementClass[0].substr(0,elementClass[0].length - "_wrapper".length))
-        // location.hash = "#"+elementClass[0].substr(0,elementClass[0].length - "_wrapper".length);
+        section      = elementClass[0].substr(0,elementClass[0].length - "_wrapper".length)
+
+        setActiveMenuItem(section)
+
+        if (Modernizr.history) {
+          if (section == "home") {
+            // history.pushState(null, null, "/");
+          }else{
+            // history.pushState(null, null, section);
+          }
+        }
       },
       onLeave: function(element, position) {
       }
     });
   });
-  
-  sections = ['home', 'writing_services', 'additional_services', 'our_clients', 'about_us', 'contact_us', 'imprint'];
-  
-  $.each(sections, function(key, section) {
-    addWrapperClasses(section)    
-    scrollToSection(section)
-  })
-  
   
   // setup accordion
   // $('.imprint').hide();
@@ -167,37 +224,19 @@ $(document).ready(function(){
 
   width      = $('dl>dt').first().width()
   height     = $('dl>dt').first().height()
-  lightBeige = "#fbf6f1";
-  darkBeige  = "#f7ebdf";
   
   // if canvas is supported, draw tabs with canvas
   if (Modernizr.canvas) {
     $.each($('.writing_services dl>dt, .additional_services dl>dt'), function(key, element) {
-    
-      $(element).append('<canvas id="canvas'+key+'"></canvas>');
-      var canvas=document.getElementById("canvas"+key);
-      canvas.setAttribute('width', width+22);
-      canvas.setAttribute('height', height+3);
-
-      var context=canvas.getContext('2d');
-
-      context.strokeStyle   = '#D8C5B4';
       if ($($(element).closest('article')).attr('class').search('writing_services') == 0) {
-          context.fillStyle     = darkBeige;
+          drawBox(element, key, width, 13, height,darkBeige, '#D8C5B4', 'right')
       };
     
       if ($($(element).closest('article')).attr('class').search('additional_services') == 0) {
-          context.fillStyle     = lightBeige;
+          drawBox(element, key, width, 13, height,lightBeige, '#D8C5B4', 'right')
       };
-    
-      context.lineWidth     = 1;
-      context.shadowColor   = "#f"
-      context.shadowOffsetX = 0;
-      context.shadowOffsetY = 0;
-      context.shadowBlur    = 10;
 
-      roundedRect(context,1,0,width+13,height+1,4,true,true);
-    })    
+    })
   };
   
   
@@ -208,9 +247,53 @@ $(document).ready(function(){
       // 
       $('area').css({ display: 'block'});
       $('area').offset({ top: $('img').offset().top, left: $('img').offset().left });
+      $('area').each(function(key, value) {
+        areaId     = $(this).attr('id').substring(3, $(this).attr('id').length)
+        bubbleText = $(".about_us dt:contains('"+areaId+"')").next().text();
+        
+        xCoords = [];
+        yCoords = [];
+        $.each($(this).attr('coords').split(','), function(index, value) {
+          if (index % 2) {
+            yCoords.push(value)
+          }else{
+            xCoords.push(value)
+          }
+        })
+        polyWidth   = Math.max.apply(Math, xCoords)-Math.min.apply(Math, xCoords);
+        polyHeight  = Math.max.apply(Math, yCoords)-Math.min.apply(Math, yCoords);
+        polyOriginX = Math.min.apply(Math, xCoords);
+        polyOriginY = Math.min.apply(Math, yCoords)-548;
+        
+        bubble = $('<div></div>')
+          .addClass("bubble")
+          .attr('id', "bubble_"+$(this).attr('id'))
+          .css({position:'absolute',top:polyOriginY-50+"px", left:polyOriginX+(polyWidth-210)/2+"px"})
+          .appendTo($(this).parent())
+          // .hide();
+
+        $('<span></span>').text(bubbleText).appendTo(bubble);
+        drawBox(bubble, "_about_us_"+key, bubble.width(),0, bubble.height(), darkBeige, '#D8C5B4', 'bottom')
+      })
+
       $('area').mouseover(function() {
-        areaId = $(this).attr('id').substring(3, $(this).attr('id').length)
-        console.log($(".about_us dt:contains('"+areaId+"')").next().text());
+        areaID = $(this).attr('id');
+        $('#bubble_'+areaID)
+        .animate({
+            opacity:1
+        },500)
+
+        
+        
+      })
+
+
+      $('area').mouseleave(function() {
+        areaID = $(this).attr('id');
+        $('#bubble_'+areaID)
+        .animate({
+            opacity:0
+        },300)
         
       })
       // 
@@ -279,6 +362,8 @@ $(document).ready(function(){
       //   };
       //       
       // });
+      
+
 });
 
 

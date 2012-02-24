@@ -58,7 +58,7 @@ tickets
 
 
 [jodis_profile]: http://de.linkedin.com/in/jodiellenstolzenbach
-[caras_profile]: http://de.linkedin.com/pub/cara-fritsche/14/70/a1a
+[caras_profile]: http://de.linkedin.com/in/carafritsche
 
 <!--- do not edit between here … --->
 <img name="about_us_items" src="img/about_us_items.png" width="1003" height="584" border="0" id="about_us_items" usemap="#m_about_us_items" alt="a glimpse of who we are" />

@@ -1,6 +1,6 @@
 --- 
 title: Our Clients
-summary: headline missing?
+summary: The type of clients we generally work with
 section: our_clients
 kind: article
 ---

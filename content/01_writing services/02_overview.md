@@ -36,6 +36,8 @@ Fact Checking: We will go to your source research to confirm that your citations
  
     [>> Method of work] [method_of_work]
 
+Method of Work: In Microsoft Word, we will use the “Track Changes” function to make corrections and comments in your document. We have found that it is helpful if you respond by using “Track Changes”. This enables us to keep track of the suggestions we have made, and your response to them. Ultimately, it is up to you to decide whether and which suggestions you would like to incorporate into your document.
+
 Layout
 : We check different elements of your document’s layout such as headlines, paragraphs, figures and illustrations.
 

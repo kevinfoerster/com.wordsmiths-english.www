@@ -31,6 +31,8 @@ Correction
 
   > See also:  
     [>> Fact-checking service] [fact_checking_service] 
+
+Fact Checking: We will go to your source research to confirm that your citations are accurate. You will be expected to provide the research documentation (your bibliography) or the physical resources (if not readily available on the internet or at the library). If you are interested in this service, we can individually agree upon a method that works for us both. There is an extra charge for this service.
  
     [>> Method of work] [method_of_work]
 

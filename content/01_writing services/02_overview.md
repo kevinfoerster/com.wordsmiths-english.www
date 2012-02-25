@@ -11,7 +11,14 @@ kind: article
 
   > This process will result in an improved version of your work that retains your personal or professional writing style.
 
-  > See also:  
+  > See also: 
+
+Academic English offers a proofreading and editing service to help you achieve a smooth and unbroken flow of narrative. This service is offered in three steps in order to ensure that your expectations are met. Should you choose to use this service we will:
+•	Carefully read your document to detect any errors in spelling, punctuation, or grammar. We will also remove any typographical errors.
+•	Check different elements of the layout of your document such as headlines, paragraphs, and illustrations.
+•	Help you to clarify obscure passages and ensure that your argument has a logical structure.
+Despite the spell checking functions of current word processors, a human proofreader is indispensable as he/she can adapt to your personal style. After using this service your document will be ready for submission to an academic journal or for a specific course.
+ 
     [>> 3-Step Process] [3_step_process]
 
 Assistance
@@ -36,7 +43,7 @@ Layout
     [>> Formatting Service] [formatting_services]
   
   
-[3_step_process]: #dont_know
+[3_step_process]: 
 
 [fact_checking_service]: #dont_know
 [method_of_work]: #dont_know

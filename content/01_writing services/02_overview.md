@@ -48,6 +48,8 @@ Layout
 
  
     [>> Formatting Service] [formatting_services]
+
+Formatting: We will format your paper according to the bibliographic format you are using or the guidelines of your institution. If you are interested in this service, please provide the guidelines via document or internet link. Formatting includes font, margins, headers/footers, title page, sections, and numbering. There is an extra charge for this service.
   
   
 [3_step_process]: 

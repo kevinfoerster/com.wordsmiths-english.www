@@ -13,12 +13,12 @@ kind: article
 
   > See also: 
 
-Academic English offers a proofreading and editing service to help you achieve a smooth and unbroken flow of narrative. This service is offered in three steps in order to ensure that your expectations are met. Should you choose to use this service we will:
-•	Carefully read your document to detect any errors in spelling, punctuation, or grammar. We will also remove any typographical errors.
-•	Check different elements of the layout of your document such as headlines, paragraphs, and illustrations.
-•	Help you to clarify obscure passages and ensure that your argument has a logical structure.
-Despite the spell checking functions of current word processors, a human proofreader is indispensable as he/she can adapt to your personal style. After using this service your document will be ready for submission to an academic journal or for a specific course.
- 
+Basic service: The basic service is done in three steps:
+(1) You will submit your completed document to us and we will start proofreading it. We will send you one proofread page within 24 hours. This will help us ensure that your expectations are met and that we understand what you expect from us.
+Once you have approved this sample, we will finish proofreading the entire document and send it to you within the agreed time frame. As most of the actual proofreading is done in this step, it is the step that needs the most time.
+(2) We will send the corrected document to you with our comments and questions. Please respond to the comments and questions within the timeframe we have agreed upon. Most of these questions will relate to clarifying your argument and revising any ambiguous language
+(3) Upon receiving your response, we will make the final changes to the document; working through it one last time to be sure we have addressed all issues. Within the agreed-upon timeframe, we will send you the finalized document with our corrections.
+
     [>> 3-Step Process] [3_step_process]
 
 Assistance

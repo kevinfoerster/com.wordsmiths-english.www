@@ -19,42 +19,42 @@ kind: article
 
 
 sa_berlin
-: Traveling recharges my soul.
+: Traveling recharges Cara's soul.
 
 
 books_cara
-: My books allow me to live many lives.
+: Her books allow Cara to live many lives.
   
 
 sushi
-: I can not resist sushi!
+: Cara can not resist sushi!
 
 cooking
-: I enjoy cooking for my friends and family.
+: Cara and Jodi both enjoy cooking for their friends and family.
 
 cat
-: My cat thinks I am perfect.
+: Cara's cat thinks she is perfect.
 
 playing
-: Board games help me to strategize.
+: Board games help Cara develop het strategizing skills.
 
 drawing
-: Sketching helps me to clarify my thoughts.
+: Cara enjoys sketching and working on other art projects as they help her clarify her thoughts.
 
 headphone
-: Music helps me to stick to my personal beat.
+: Music helps Jodi to stick to her personal beat.
 
 riddle
-: Puzzles provide me with a challenge.
+: Puzzles and riddles provide Jodi with a mental challenge.
 
 books_jodi
-: My brain thirsts for knowledge
+: Jodi's brain thirsts for knowledge
 
 backen
-: I find baking therapeutic.
+: Jodi finds baking therapeutic.
 
 tickets
-: Shows are a great way for me to spend weekends.
+: Exhibitions give Jodi her cultural fix.
 
 
 [jodis_profile]: http://de.linkedin.com/in/jodiellenstolzenbach

@@ -27,7 +27,7 @@ end
 compile '/assets/js/*/' do
   # only minify if it's not already minified
   unless MINIFIED_JS_RE.match(item[:extension])
-    # filter :uglify_js
+    filter :uglify_js
   end
 end
 
@@ -104,10 +104,16 @@ end
 route '*' do
   if item.binary? || !HTML_EXTENSIONS.include?(item[:extension])
     # Write item with identifier /foo/ to /foo.ext
-    item.identifier.chop + '.' + item[:extension]
+    if item[:extension] != "erb"
+      item.identifier.chop + '.' + item[:extension]
+    end
   else
     # Write item with identifier /foo/ to /foo/index.html
-    item.identifier + 'index.html'
+    # p item.identifier
+    if item.identifier == "/"
+      item.identifier + 'index.html'
+    end
+    
   end
 end
 

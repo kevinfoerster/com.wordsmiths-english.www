@@ -31,7 +31,6 @@ kind: article
 
     We will work in cooperation with you until you are happy with our work.	
     
-    > Take a look at what [other clients] [our_clients] have said about our work.
 
 5.	##The Result	
     _Wrapping up your project with the best results._
@@ -44,4 +43,3 @@ kind: article
 
 
 [writing_services]: #writing_services
-[our_clients]: #our_clients

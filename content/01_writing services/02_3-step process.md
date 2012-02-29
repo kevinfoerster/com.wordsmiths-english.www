@@ -22,5 +22,3 @@ Step 2
 
 Step 3 
 : Upon receiving your response, we will make the final changes to the document; working through it one last time to be sure we have addressed all issues. Within the agreed-upon timeframe, we will send you the finalized document with our corrections.
-
-____

@@ -110,7 +110,7 @@ $color: "transparent";
 
 
 .home_wrapper:nth-child(2)>.home{
-  width: 3 * $columnWidth + 2 * $gutter;
+  width: 3 * $columnWidth + 2 * $gutter - 30px;
 }
 .home_wrapper:nth-child(3)>.home{
   width: 5 * $columnWidth + 4 * $gutter;
@@ -286,6 +286,8 @@ h3{
     shadow: rgba(0, 0, 0, .15) 0px -1px 1px, rgba(255, 255, 255, .6) 0px 0px 1px, rgba(255, 255, 255, 0.4) 0 1px 1px;
     align: left;
   }
+  margin-top:0;
+  margin-bottom:-16px;
   background:none !important;
   height:auto;
   padding:0 !important;
@@ -295,8 +297,9 @@ h4{
   color: $copyDarkBeige;
   text-align:center;
   display:block;
-  margin-top:0;
+  margin:0;
   padding-bottom:12px;
+  
   background:{
     image: url(../img/arrow_down.png);
     repeat: no-repeat;
@@ -310,6 +313,8 @@ h4{
     weight: normal;
   }
 }
+
+
 blockquote,
 blockquote>p {
   @extend h4;
@@ -457,7 +462,7 @@ header{
 
 .borderBox{
 /*  @include borderBox(solid, red);*/
-  padding: 22px $borderBoxHorizontalPadding 16px $borderBoxHorizontalPadding;
+  padding: 10px $borderBoxHorizontalPadding 10px $borderBoxHorizontalPadding;
   width: 3 * $columnWidth + 2 * $gutter - 2 * $borderBoxHorizontalPadding;
   h2{
     text-align:left;
@@ -485,12 +490,15 @@ header{
       display:inline-block;
     }
   }
-  
+  h4{
+    margin-bottom:20px;
+  }
   ol{
     @include clearfix;
     width: 5 * $columnWidth + 4 * $gutter;
     padding:0;
     counter-reset:item;
+
     margin:auto;
     li:before{
       content: counter(item);
@@ -522,6 +530,7 @@ header{
       padding:0;
     }
     li{
+      margin-top:-10px !important;
       list-style-type: none;
       float:left;
       width: $columnWidth;
@@ -550,7 +559,9 @@ header{
   width: 2 * $columnWidth + $gutter;
   margin:auto
 }
-
+.home.borderBox>h2{
+  margin-bottom:20px;
+}
 p, dd{
   color: $copyRed;
   font: {
@@ -828,11 +839,11 @@ p, dd{
     background-image: url(../img/imprint_background.png);
     background-position: top center;
     background-repeat: no-repeat;
+    line-height:16px;
     height: 12px;
     border-bottom: 6px solid #33B2A2;
   }
   
-
   h3{
     text-align:left;
     border:0;
@@ -844,24 +855,21 @@ p, dd{
     top:0px;
     margin:0;
   }
-
+  
   h4{
     text-align:left;
     background:none;
     color: $copyTurquise;
     margin:0;
     position: relative;
-    top:0px;
-    
+    top:0px; 
   }
+  
   p,
   address{
     font-size:11px;
     margin-bottom:2em;
     color: $copyDarkBeige;
-  }
-  address{
-    text-align:center !important;
   }
 }
 
@@ -949,22 +957,26 @@ p, dd{
     layout:  ipad/small
   */
   .about_us{
+    position:static;
     width: 3 * $columnWidth + 2 * $gutter;
     img{
       margin:0;
       display:none;
     }
     ul{
+      @include clearfix;
+      padding:0;
       position:static;
       margin:0;
+      padding-bottom:20px;
       list-style-type:none;
       li{
-        width: (3 * $columnWidth + 2 * $gutter)/2;
+        float:left;
+        margin:0;
+        width:50%;
         position:static;
-        text-align:left;
         float:left;
         h3{
-          text-align:left;
           font-size:34px;
           margin:0;
           line-height:1em;
@@ -1036,24 +1048,54 @@ p, dd{
       ul{
         float:none;
         position:static;
+        height:30px !important;
+        margin:0 !important;
+        padding:0 !important;
+        position: static !important;
+        float:none;
+        clear:both;
+        
         li{
-          @include experimental(background-size, contain);
+/*          @include experimental(background-size, contain);*/
           position:static;
           float:none;
           clear:both;
-          line-height:100px;
-          line-height: 60px;
-          height: 60px;
+/*          line-height:100px;*/
+          line-height: 20px;
+          height: 20px;
+          line-height:20px;
           text-align: left;
-
+          background:none;
           background-position:left center;
+          margin:0 !important;
+          padding:0 !important;
+          position: static !important;
+          float:none !important;
+          clear:both !important;
+          background:red;
+          a{
+            margin:0 !important;
+            padding:0 !important;
+            position: static !important;
+            float:none !important;
+            clear:both !important;
+            height: auto;
+          }
           span{
-            height: 60px;
-            width: 65px;
-            position: relative;
+/*            height: 60px;*/
+            height:0;
+            width: 0px;
+
+
             left: -10px;
             float:left;
             @include experimental(background-size, contain);
+            display:none;
+            margin:0;
+            padding:0;
+            position: static;
+            float:none;
+            clear:both;
           }
         }
       }

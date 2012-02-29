@@ -44,16 +44,13 @@ function scrollToSection(section) {
 
 function createTabs() {
   $('dl').addClass('clearfix')
-  $('dd').addClass('hidden')
+ 
+  
   $.each($('.writing_services dl>dt, .additional_services dl>dt'), function(key, tab) {
     $(tab).wrapInner('<span/>');
   })
   
   $.each($('.writing_services dl, .additional_services dl'), function(key, element) {
-    $(element).find('dd').first().removeClass('hidden');
-    $(element).find('dt').first().addClass('active');
-
-
     $(element).find('span').click(function(event) {
       $(event.target).parent().siblings('dt').andSelf().removeClass('active');
       $(this).parent().addClass('active');
@@ -69,7 +66,31 @@ function createTabs() {
         })
       };
     })
+    
+    var definitionListHeights = [];
+    definitionListHeights.push($(element).outerHeight())
+    
+    $.each($(element).find('dd'), function(key, element) {
+     definitionListHeights.push($(element).outerHeight())
+    })
+    // $('dd').addClass('hidden')
+    $(element).height(Math.max.apply(Math, definitionListHeights)+10)
+    $(element).find('dd:not(:first)').addClass('hidden')
+    // $(element).find('dd').first().removeClass('hidden');
+    $(element).find('dt').first().addClass('active');
+
+
   });
+
+
+  // $.each($(element).find('dd'), function(key, element) {
+  //  definitionListHeights.push($(element).outerHeight())
+  // })
+  
+  // if ($('dd').hasClass('active')) {
+  //   $('dd').addClass('hidden');
+  // };
+  
 };
 
 function getTopOffset() {

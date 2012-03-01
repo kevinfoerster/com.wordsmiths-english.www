@@ -36,7 +36,7 @@ cat
 : Cara's cat thinks she is perfect.
 
 playing
-: Board games help Cara develop het strategizing skills.
+: Board games help Cara develop her strategizing skills.
 
 drawing
 : Cara enjoys sketching and working on other art projects as they help her clarify her thoughts.

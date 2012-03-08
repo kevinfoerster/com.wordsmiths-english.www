@@ -107,8 +107,6 @@ $color: "transparent";
 @include sectionHeading(about_us);
 @include sectionHeading(contact_us);
 
-
-
 .home_wrapper:nth-child(2)>.home{
   width: 3 * $columnWidth + 2 * $gutter - 30px;
 }
@@ -120,29 +118,17 @@ $color: "transparent";
   padding-top:23px;
 }
 
+
+
 .home_wrapper,
 .additional_services_wrapper{
   background:$darkBeige;
-/*  background:red;*/
-/*  .borderBox{
-    background-color:$lightBeige;
-  }*/
 }
 .writing_services_wrapper,
 .our_clients_wrapper,
 .contact_us_wrapper{
   background:$lightBeige;
-/*  .borderBox{
-    background-color:$darkBeige;
-  }*/
 }
-
-
-
-
-
-
-
 
 .additional_services,
 .writing_services,
@@ -314,6 +300,17 @@ h4{
   }
 }
 
+h5{
+  font:{
+    weight: normal;
+    size:15px;
+    style:normal;
+    family: $amaranth;
+  }
+  margin-bottom:0;
+  
+}
+
 
 blockquote,
 blockquote>p {
@@ -382,35 +379,29 @@ header{
 
 
 #nav{
-  height:95px;
-  list-style-type:none;
+  @include inline-block-list(3px);
+/*  @include inline-list;*/
   float:right;
-  margin:0;
-  padding:0;
-
-  li:before{
-
-    height:95px;
-    display:block;
-    width:2px;
-    float:left !important;
-    padding-right:10px;
-    background:{
-      image: url("../img/nav/divider.png");
-      position:0 50px;
-      repeat:no-repeat;
-    }
-    content: " "
-
-  };
   li{
+    &:before{
+      height:95px;
+      display:block;
+      width:2px;
+      float:left !important;
+      padding-right:10px;
+      background:{
+        image: url("../img/nav/divider.png");
+        position:0 50px;
+        repeat:no-repeat;
+      }
+      content: " "
+    }
+
     @include experimental(transition, color 0.4s ease-in-out);
     text-align:center;
     vertical-align:top;
     font: 16px/200% $amaranth;
     color: $navTurquise;
-    float:left;
-    height:70px;
     background: {
       repeat: no-repeat;
       position:top center;
@@ -422,16 +413,18 @@ header{
       display:block;
       span{
         margin:auto;
-        width:100px;
+/*        width:100px;*/
         @include experimental(transition, background-position 0.2s ease-in-out);
         position: relative;
         top: -10px;
+
         height: 69px;
         display:block;
         margin-bottom:-13px;
         background: {
           repeat: no-repeat;
-          position: 0 10px;
+          position: center 10px;
+/*          position: 0 10px;*/
         } 
       }    
     }      
@@ -440,10 +433,9 @@ header{
   li:hover a{
     color: $headlineRed;
     span{
-       background-position: 0 0px;
+       background-position: center 0px;
      }
   }
-  
 }
 
 
@@ -690,7 +682,7 @@ p, dd{
     padding: $borderBoxHorizontalPadding;
   }
 }
-/*nice*/
+
 .contact_us{
   .contactBox{
     @include borderBox(dashed, transparent);
@@ -902,18 +894,15 @@ p, dd{
         margin:auto !important;
         position:static;
       }
-
-      ul { 
-        list-style: none; 
-        position: relative; 
-        float: left; 
-        display: block; 
-        left: 50%; 
+      #nav{
+        @include clearfix;
+        float:none;
+        display: inline;
         li { 
-          position: relative; 
-          float: left; 
-          display: block; 
-          right: 50%;}
+          &:before{
+            background:none
+          }
+        }
       }
     }
     #border{
@@ -959,8 +948,8 @@ p, dd{
   .about_us{
     position:static;
     width: 3 * $columnWidth + 2 * $gutter;
-    img{
-      margin:0;
+    &>p{
+      background:red;
       display:none;
     }
     ul{
@@ -1040,69 +1029,14 @@ p, dd{
   */
   header{
     position:static;
+    margin-bottom:-48px;
     #navigationWrapper{
       height:auto;
-      widht:100%;
       overflow: hidden;
-      
-      ul{
-        float:none;
-        position:static;
-        height:30px !important;
-        margin:0 !important;
-        padding:0 !important;
-        position: static !important;
-        float:none;
-        clear:both;
-        
-        li{
-/*          @include experimental(background-size, contain);*/
-          position:static;
-          float:none;
-          clear:both;
-/*          line-height:100px;*/
-          line-height: 20px;
-          height: 20px;
-          line-height:20px;
-          text-align: left;
-          background:none;
-          background-position:left center;
-          margin:0 !important;
-          padding:0 !important;
-          position: static !important;
-          float:none !important;
-          clear:both !important;
-          background:red;
-          a{
-            margin:0 !important;
-            padding:0 !important;
-            position: static !important;
-            float:none !important;
-            clear:both !important;
-            height: auto;
-          }
-          span{
-/*            height: 60px;*/
-            height:0;
-            width: 0px;
-
-
-            left: -10px;
-            float:left;
-            @include experimental(background-size, contain);
-            display:none;
-            margin:0;
-            padding:0;
-            position: static;
-            float:none;
-            clear:both;
-          }
-        }
-      }
     }
     #border{
       position: relative;
-      top: 48px;
+      top: -5px;
     }
   }
 

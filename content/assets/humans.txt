@@ -3,18 +3,23 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site: 
+  Design: Diemo Barz
+  Site: http://www.diemobarz.com
   Twitter: 
-  Location: 
+  Location: Hamburg
+
+  Development: Kevin Förster
+  Site: http://www.kevinfoerster.com
+  Twitter: @k_os
+  Location: Hamburg
 
 /* THANKS */
-  Names (& URL): 
+  jingoro: https://github.com/jingoro/nanoc-html5boilerplate
 
 /* SITE */
   Standards: HTML5, CSS3
   Components: Modernizr, jQuery
-  Software:
+  Software: Nanoc, Espresso, SCSS etc
   
 
                                     

@@ -8,12 +8,10 @@ var darkBeige      = "#f7ebdf";
 function replaceHeart() {
   $('*:contains("❤"):last').html($('*:contains("❤"):last').text().replace("❤", "<span id='heart'>❤</span>"))
 };
-  
 function addWrapperClasses(section) {
   $("."+section+"_wrapper:last").addClass('last')
   $("."+section+"_wrapper:first").addClass('first')
 };
-  
 function setActiveMenuItem(id) {
   $('#nav>li').removeClass('active');
   $('#nav>li#nav_'+id).addClass('active');
@@ -41,7 +39,6 @@ function scrollToSection(section) {
   $.scrollTo( $('.'+ section +':first'), 300, {offset:{top: getTopOffset()}});
   // console.log( {offset:{top: getTopOffset()}})  
 };
-
 function createTabs() {
   $('dl').addClass('clearfix')
  
@@ -92,7 +89,6 @@ function createTabs() {
   // };
   
 };
-
 function getTopOffset() {
   padding = $('body').css('padding-top');
   return padding.substring(0, padding.length -2 ) * -1
@@ -155,26 +151,40 @@ var roundedRect=function(ctx,x,y,width,height,radius,fill,stroke, tailPosition)
 }
 
 var drawBox = function(element, key, width, widthOffset, height, fillColor, strokeColor, tailPosition) {
-        $(element).append('<canvas id="canvas'+key+'"></canvas>');
+  $(element).append('<canvas id="canvas' + key + '"></canvas>');
 
-        var canvas=document.getElementById("canvas"+key);
-        canvas.setAttribute('width', width+22);
-        canvas.setAttribute('height', height+7);
+  var canvas = document.getElementById("canvas" + key);
+  canvas.setAttribute('width', width + 22);
+  canvas.setAttribute('height', height + 7);
 
-        var context           = canvas.getContext('2d');
+  var context = canvas.getContext('2d');
 
-        context.strokeStyle   = strokeColor;
-        context.fillStyle     = fillColor;
-    
-        context.lineWidth     = 1;
-        context.shadowColor   = "#f"
-        context.shadowOffsetX = 0;
-        context.shadowOffsetY = 0;
-        context.shadowBlur    = 10;
+  context.strokeStyle = strokeColor;
+  context.fillStyle = fillColor;
 
-        roundedRect(context,1,0,width+widthOffset,height+1,4,true,true, tailPosition);
-      };
+  context.lineWidth = 1;
+  context.shadowColor = "#f"
+  context.shadowOffsetX = 0;
+  context.shadowOffsetY = 0;
+  context.shadowBlur = 10;
 
+  roundedRect(context, 1, 0, width + widthOffset, height + 1, 4, true, true, tailPosition);
+};
+
+// $(window).resize(function() {
+//   // $('#log').append('<div>Handler for .resize() called.</div>');
+//   if ($(window).width() <= 768) {    
+//     $('article.writing_services dl').each(function(index, element){
+//       $(element).data('height',$(element).css('height'))
+//     })
+//     $('article.writing_services dl').css('height', 'auto')
+//   }else{
+//     $('article.writing_services dl').each(function(index, element){
+//       $(element).css('height', $(element).data('height'))
+//     })
+//     
+//   }
+// });
 
 $(document).ready(function(){
   replaceHeart()
@@ -223,24 +233,6 @@ $(document).ready(function(){
       }
     });
   });
-  
-  // setup accordion
-  // $('.imprint').hide();
-  // $('.imprint h2').click(function(){
-  //   if (imprintVisible) {
-  //     $($('.imprint')[1]).slideUp();
-  // 
-  //     imprintVisible = false;
-  //   }else{
-  //     $($('.imprint')[1]).slideDown(300, function() {
-  //       $.scrollTo( $('.imprint'), 300,  {offset:{top: -250}});
-  //       imprintVisible = true;
-  //     });
-  // 
-  // 
-  //   }
-  //   return false;
-  // });
   
 
   width      = $('dl>dt').first().width()
